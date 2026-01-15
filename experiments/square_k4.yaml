@@ -1,0 +1,19 @@
+description: Square lattice, target 4-coloring
+enabled: true
+pipeline_config:
+  geometry:
+    lattice_type: square
+    v1:
+    - 1.0
+    - 0.0
+    v2:
+    - 0.0
+    - 1.0
+  graph_builder:
+    epsilon: 0.02
+    sampling_method: grid
+  pipeline:
+    initial_points: 100
+    max_iterations: 15
+    target_k: 4
+priority: 2

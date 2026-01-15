@@ -1,0 +1,94 @@
+# 正方形晶格配置 - 基础测试和对比
+
+geometry:
+  lattice_type: "square"
+  v1: [1.0, 0.0]
+  v2: [0.0, 1.0]
+  wrap_to_fundamental: true
+  periodic_distance_max_shifts: 2
+
+graph_builder:
+  epsilon: 0.02
+  sampling_method: "grid"
+  use_kdtree: true
+  search_factor: 1.5
+  min_points: 16
+  max_points: 400
+  jitter: 0.005
+  edge_density_threshold: 0.1
+  deterministic: true
+
+sat_solver:
+  solver_name: "glucose"
+  timeout: 60
+  verbose: false
+  temp_dir: "/tmp/orbifold_sat"
+  keep_temp_files: false
+  memory_limit: "4G"
+  encoding: "standard"
+  symmetry_breaking: true
+
+optimizer:
+  method: "constraint_based"
+  num_candidates: 800
+  relaxation_iterations: 5
+  learning_rate: 0.1
+  energy_sigma: 0.02
+  attraction_factor: 0.1
+  max_energy_evaluations: 1000
+  population_size: 30
+  mutation_rate: 0.15
+  crossover_rate: 0.6
+  anneal_start: 0.03
+  anneal_end: 0.005
+  anneal_steps: 30
+
+pipeline:
+  initial_points: 25
+  target_k: 4
+  max_iterations: 20
+  anneal_epsilon: true
+  epsilon_decay: 0.9
+  min_epsilon: 0.001
+  save_interval: 5
+  output_dir: "results/square"
+  checkpoint_interval: 5
+  max_runtime_hours: 6
+  early_stopping_patience: 3
+
+visualization:
+  show_plots: true
+  save_plots: true
+  dpi: 300
+  format: "png"
+  colors: 
+    - "#E74C3C"  # red
+    - "#3498DB"  # blue
+    - "#2ECC71"  # green
+    - "#F39C12"  # orange
+    - "#9B59B6"  # purple
+    - "#1ABC9C"  # turquoise
+    - "#E67E22"  # carrot
+    - "#34495E"  # dark blue
+    - "#F1C40F"  # yellow
+    - "#7F8C8D"  # gray
+  figure_size: [10, 8]
+  show_axes: true
+  show_grid: true
+  show_legend: true
+
+monitoring:
+  log_level: "INFO"
+  log_file: "logs/square_pipeline.log"
+  progress_bar: true
+  metrics_interval: 10
+  save_metrics: true
+  telemetry: false
+
+experiment:
+  name: "square_lattice_experiment"
+  description: "Unit distance graph coloring on square lattice - baseline"
+  author: "Orbifold Coloring System"
+  date: "auto"
+  tags: ["square", "unit-distance", "chromatic-number", "baseline"]
+  version: "1.0.0"

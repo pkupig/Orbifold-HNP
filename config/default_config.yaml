@@ -1,0 +1,52 @@
+# 轨形染色系统 - 默认配置
+
+# 几何配置
+geometry:
+  lattice_type: "hexagonal"  # 晶格类型: hexagonal, square
+  v1: [1.0, 0.0]            # 基础向量1
+  v2: [0.5, 0.86602540378]  # 基础向量2 (sqrt(3)/2)
+  wrap_to_fundamental: true  # 是否包裹到基本域
+  
+# 图构建配置
+graph_builder:
+  epsilon: 0.02              # 单位距离容差
+  sampling_method: "fibonacci"  # 采样方法: fibonacci, grid, random
+  use_kdtree: true           # 使用KDTree加速
+  search_factor: 1.5         # 搜索半径因子
+  min_points: 10             # 最小点数
+  max_points: 1000           # 最大点数
+  
+# SAT求解器配置
+sat_solver:
+  solver_name: "kissat"      # 求解器: kissat, glucose, minisat, cadical
+  timeout: 60                # 超时时间(秒)
+  verbose: false             # 详细输出
+  temp_dir: "/tmp"           # 临时目录
+  
+# 优化器配置
+optimizer:
+  method: "constraint_based" # 方法: energy_based, constraint_based, hybrid
+  num_candidates: 1000       # 候选点数量
+  relaxation_iterations: 5   # 松弛迭代次数
+  learning_rate: 0.1         # 学习率
+  energy_sigma: 0.02         # 能量函数的高斯核宽度
+  attraction_factor: 0.1     # 吸引因子
+  
+# 管道配置
+pipeline:
+  initial_points: 30         # 初始点数
+  target_k: 4                # 目标颜色数
+  max_iterations: 20         # 最大迭代次数
+  anneal_epsilon: true       # 是否退火epsilon
+  epsilon_decay: 0.9         # epsilon衰减率
+  min_epsilon: 0.001         # 最小epsilon
+  save_interval: 5           # 保存间隔
+  output_dir: "results"      # 输出目录
+  
+# 可视化配置
+visualization:
+  show_plots: true           # 显示图表
+  save_plots: true           # 保存图表
+  dpi: 300                   # 图像DPI
+  format: "png"              # 图像格式
+  colors: ["red", "green", "blue", "yellow", "purple", "orange", "pink", "brown", "gray", "cyan"]

@@ -1,0 +1,36 @@
+constraints: {}
+dependencies: []
+description: 'Fix: Brute force distance check (No KDTree)'
+enabled: true
+max_memory_gb: 8.0
+name: fix_300_k4
+parameters: {}
+pipeline_config:
+  geometry:
+    lattice_type: hexagonal
+    v1:
+    - 1.0
+    - 0.0
+    v2:
+    - 0.5
+    - 0.86602540378
+  graph_builder:
+    epsilon: 0.05
+    sampling_method: fibonacci
+    use_kdtree: false
+  optimizer:
+    method: hybrid
+    num_candidates: 1000
+    relaxation_iterations: 10
+  pipeline:
+    anneal_epsilon: true
+    epsilon_decay: 0.96
+    initial_points: 300
+    max_iterations: 15
+    min_epsilon: 0.03
+    save_interval: 3
+    target_k: 4
+priority: 1
+timeout_hours: 6.0
+timestamp: '2026-01-15T03:23:53.567683'
+version: 1.0.0

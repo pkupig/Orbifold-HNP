@@ -1,0 +1,27 @@
+constraints: {}
+dependencies: []
+description: Hexagonal lattice, target 4-coloring
+enabled: true
+max_memory_gb: 8.0
+name: hexagonal_k4
+parameters: {}
+pipeline_config:
+  geometry:
+    lattice_type: hexagonal
+    v1:
+    - 1.0
+    - 0.0
+    v2:
+    - 0.5
+    - 0.86602540378
+  graph_builder:
+    epsilon: 0.02
+    sampling_method: fibonacci
+  pipeline:
+    initial_points: 25
+    max_iterations: 15
+    target_k: 4
+priority: 1
+timeout_hours: 6.0
+timestamp: '2026-01-15T03:23:53.573973'
+version: 1.0.0

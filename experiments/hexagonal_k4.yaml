@@ -1,0 +1,19 @@
+description: Hexagonal lattice, target 4-coloring
+enabled: true
+pipeline_config:
+  geometry:
+    lattice_type: hexagonal
+    v1:
+    - 1.0
+    - 0.0
+    v2:
+    - 0.5
+    - 0.86602540378
+  graph_builder:
+    epsilon: 0.02
+    sampling_method: fibonacci
+  pipeline:
+    initial_points: 25
+    max_iterations: 15
+    target_k: 4
+priority: 1

@@ -1,0 +1,26 @@
+description: Robust Base Experiment (No Annealing)
+enabled: true
+pipeline_config:
+  geometry:
+    lattice_type: hexagonal
+    v1:
+    - 1.0
+    - 0.0
+    v2:
+    - 0.5
+    - 0.86602540378
+  graph_builder:
+    epsilon: 0.05
+    sampling_method: fibonacci
+    use_kdtree: true
+  optimizer:
+    method: hybrid
+    num_candidates: 1000
+    relaxation_iterations: 10
+  pipeline:
+    anneal_epsilon: false
+    initial_points: 100
+    max_iterations: 20
+    save_interval: 5
+    target_k: 4
+priority: 1

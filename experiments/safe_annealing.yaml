@@ -1,0 +1,27 @@
+description: Challenging Experiment (Safe Annealing)
+enabled: true
+pipeline_config:
+  geometry:
+    lattice_type: hexagonal
+    v1:
+    - 1.0
+    - 0.0
+    v2:
+    - 0.5
+    - 0.86602540378
+  graph_builder:
+    epsilon: 0.05
+    sampling_method: fibonacci
+  optimizer:
+    learning_rate: 0.05
+    method: hybrid
+    num_candidates: 1500
+    relaxation_iterations: 15
+  pipeline:
+    anneal_epsilon: true
+    epsilon_decay: 0.95
+    initial_points: 150
+    max_iterations: 30
+    min_epsilon: 0.02
+    target_k: 5
+priority: 2

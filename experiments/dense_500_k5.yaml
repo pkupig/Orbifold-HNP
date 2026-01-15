@@ -1,0 +1,27 @@
+description: Aggressive Search (500 points, target k=5)
+enabled: true
+pipeline_config:
+  geometry:
+    lattice_type: hexagonal
+    v1:
+    - 1.0
+    - 0.0
+    v2:
+    - 0.5
+    - 0.86602540378
+  graph_builder:
+    epsilon: 0.04
+    sampling_method: grid
+  optimizer:
+    attraction_factor: 0.2
+    method: hybrid
+    num_candidates: 3000
+    relaxation_iterations: 20
+  pipeline:
+    anneal_epsilon: true
+    epsilon_decay: 0.98
+    initial_points: 500
+    max_iterations: 30
+    min_epsilon: 0.025
+    target_k: 5
+priority: 2

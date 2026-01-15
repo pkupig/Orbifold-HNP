@@ -1,0 +1,94 @@
+# 六边形晶格配置 - 用于寻找高色数单位距离图
+
+geometry:
+  lattice_type: "hexagonal"
+  v1: [1.0, 0.0]
+  v2: [0.5, 0.8660254037844386]  # sqrt(3)/2
+  wrap_to_fundamental: true
+  periodic_distance_max_shifts: 2
+
+graph_builder:
+  epsilon: 0.015
+  sampling_method: "fibonacci"
+  use_kdtree: true
+  search_factor: 1.8
+  min_points: 15
+  max_points: 500
+  jitter: 0.001
+  edge_density_threshold: 0.05
+  deterministic: true
+
+sat_solver:
+  solver_name: "kissat"
+  timeout: 90
+  verbose: false
+  temp_dir: "/tmp/orbifold_sat"
+  keep_temp_files: false
+  memory_limit: "8G"
+  encoding: "efficient"
+  symmetry_breaking: true
+
+optimizer:
+  method: "hybrid"
+  num_candidates: 1200
+  relaxation_iterations: 8
+  learning_rate: 0.08
+  energy_sigma: 0.015
+  attraction_factor: 0.15
+  max_energy_evaluations: 1500
+  population_size: 50
+  mutation_rate: 0.1
+  crossover_rate: 0.7
+  anneal_start: 0.02
+  anneal_end: 0.002
+  anneal_steps: 50
+
+pipeline:
+  initial_points: 35
+  target_k: 5
+  max_iterations: 30
+  anneal_epsilon: true
+  epsilon_decay: 0.92
+  min_epsilon: 0.0005
+  save_interval: 3
+  output_dir: "results/hexagonal"
+  checkpoint_interval: 10
+  max_runtime_hours: 12
+  early_stopping_patience: 5
+
+visualization:
+  show_plots: true
+  save_plots: true
+  dpi: 300
+  format: "png"
+  colors: 
+    - "#FF6B6B"  # red
+    - "#4ECDC4"  # teal
+    - "#45B7D1"  # blue
+    - "#96CEB4"  # green
+    - "#FFEAA7"  # yellow
+    - "#DDA0DD"  # plum
+    - "#FFA07A"  # salmon
+    - "#98D8C8"  # mint
+    - "#F7DC6F"  # gold
+    - "#BB8FCE"  # purple
+  figure_size: [12, 10]
+  show_axes: false
+  show_grid: true
+  show_legend: true
+
+monitoring:
+  log_level: "INFO"
+  log_file: "logs/hexagonal_pipeline.log"
+  progress_bar: true
+  metrics_interval: 5
+  save_metrics: true
+  telemetry: false
+
+experiment:
+  name: "hexagonal_lattice_experiment"
+  description: "Search for high-chromatic unit distance graphs on hexagonal lattice"
+  author: "Orbifold Coloring System"
+  date: "auto"
+  tags: ["hexagonal", "unit-distance", "chromatic-number", "orbifold"]
+  version: "1.0.0"

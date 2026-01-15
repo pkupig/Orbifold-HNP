@@ -1,0 +1,121 @@
+# 实验性配置 - 尝试突破已知界限
+
+geometry:
+  lattice_type: "hexagonal"
+  v1: [1.0, 0.0]
+  v2: [0.5, 0.8660254037844386]
+  wrap_to_fundamental: true
+  periodic_distance_max_shifts: 3
+  use_dual_lattice: true
+
+graph_builder:
+  epsilon: 0.01
+  sampling_method: "hybrid"
+  use_kdtree: true
+  search_factor: 2.0
+  min_points: 20
+  max_points: 1000
+  jitter: 0.002
+  edge_density_threshold: 0.03
+  deterministic: false
+  adaptive_epsilon: true
+  min_cluster_size: 3
+
+sat_solver:
+  solver_name: "cadical"
+  timeout: 180
+  verbose: true
+  temp_dir: "/tmp/orbifold_experimental"
+  keep_temp_files: true
+  memory_limit: "16G"
+  encoding: "log"
+  symmetry_breaking: true
+  preprocessing: "full"
+  restart: "luby"
+
+optimizer:
+  method: "evolutionary"
+  num_candidates: 2000
+  relaxation_iterations: 10
+  learning_rate: 0.05
+  energy_sigma: 0.01
+  attraction_factor: 0.2
+  max_energy_evaluations: 2000
+  population_size: 100
+  mutation_rate: 0.2
+  crossover_rate: 0.8
+  anneal_start: 0.015
+  anneal_end: 0.0005
+  anneal_steps: 100
+  use_ml_predictor: false
+  ml_model_path: "models/hard_point_predictor.pkl"
+
+pipeline:
+  initial_points: 50
+  target_k: 6
+  max_iterations: 50
+  anneal_epsilon: true
+  epsilon_decay: 0.95
+  min_epsilon: 0.0001
+  save_interval: 2
+  output_dir: "results/experimental"
+  checkpoint_interval: 5
+  max_runtime_hours: 24
+  early_stopping_patience: 10
+  multi_start: true
+  num_restarts: 3
+  parallel_execution: false
+
+visualization:
+  show_plots: true
+  save_plots: true
+  dpi: 400
+  format: "pdf"
+  colors: 
+    - "#FF0000"  # red
+    - "#00FF00"  # green
+    - "#0000FF"  # blue
+    - "#FFFF00"  # yellow
+    - "#FF00FF"  # magenta
+    - "#00FFFF"  # cyan
+    - "#FFA500"  # orange
+    - "#800080"  # purple
+    - "#008000"  # dark green
+    - "#000080"  # navy
+    - "#800000"  # maroon
+    - "#008080"  # teal
+  figure_size: [14, 12]
+  show_axes: false
+  show_grid: false
+  show_legend: true
+  animate_progress: false
+
+monitoring:
+  log_level: "DEBUG"
+  log_file: "logs/experimental_pipeline.log"
+  progress_bar: true
+  metrics_interval: 1
+  save_metrics: true
+  telemetry: true
+  profile_performance: false
+
+advanced:
+  use_gpu: false
+  parallel_processing: true
+  num_threads: 4
+  cache_results: true
+  cache_size: 1000
+  seed: 424242
+  deterministic_mode: false
+
+experiment:
+  name: "experimental_breakthrough"
+  description: "Experimental configuration aiming for chromatic number > 5 on unit distance graphs"
+  author: "Orbifold Coloring System Research Team"
+  date: "auto"
+  tags: ["experimental", "breakthrough", "hexagonal", "high-chromatic", "research"]
+  version: "2.0.0-beta"
+  hypothesis: "Existence of unit distance graphs with chromatic number > 5 on hexagonal lattice orbifolds"
+  references:
+    - "Moser, L., & Moser, W. (1961). Problem 10. Canadian Mathematical Bulletin, 4, 187-189."
+    - "de Grey, A. D. N. J. (2018). The chromatic number of the plane is at least 5. arXiv:1804.02385"

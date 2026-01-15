@@ -1,0 +1,34 @@
+constraints: {}
+dependencies: []
+description: 'Fix: High density with brute force'
+enabled: true
+max_memory_gb: 8.0
+name: fix_500_k5
+parameters: {}
+pipeline_config:
+  geometry:
+    lattice_type: hexagonal
+    v1:
+    - 1.0
+    - 0.0
+    v2:
+    - 0.5
+    - 0.86602540378
+  graph_builder:
+    epsilon: 0.04
+    sampling_method: grid
+    use_kdtree: false
+  optimizer:
+    method: hybrid
+    num_candidates: 2000
+    relaxation_iterations: 15
+  pipeline:
+    anneal_epsilon: true
+    initial_points: 500
+    max_iterations: 20
+    min_epsilon: 0.025
+    target_k: 5
+priority: 2
+timeout_hours: 6.0
+timestamp: '2026-01-15T03:23:53.571216'
+version: 1.0.0
